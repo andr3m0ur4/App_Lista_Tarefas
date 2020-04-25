@@ -7,7 +7,7 @@
 		private $user = 'root';
 		private $pass = '';
 
-		public function __construct()
+		public function conectar()
 		{
 			try {
 
