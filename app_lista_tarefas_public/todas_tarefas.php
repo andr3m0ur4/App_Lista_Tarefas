@@ -1,3 +1,10 @@
+<?php 
+	
+	$acao = 'recuperar';
+	require './tarefa_controller.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>

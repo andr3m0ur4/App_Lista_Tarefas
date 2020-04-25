@@ -4,13 +4,19 @@
 	require '../app_lista_tarefas/TarefaService.php';
 	require '../app_lista_tarefas/Conexao.php';
 
-	$tarefa = new Tarefa();
-	$tarefa->__set('tarefa', $_POST['tarefa']);
+	$acao = $_GET['acao'] ?? $acao;
 
-	$conexao = new Conexao();
+	if ($acao == 'inserir') {
+		$tarefa = new Tarefa();
+		$tarefa->__set('tarefa', $_POST['tarefa']);
 
-	$tarefa_service = new TarefaService($conexao, $tarefa);
-	$tarefa_service->inserir();
+		$conexao = new Conexao();
 
-	header('Location: ./nova_tarefa.php?inclusao=1');
+		$tarefa_service = new TarefaService($conexao, $tarefa);
+		$tarefa_service->inserir();
+
+		header('Location: ./nova_tarefa.php?inclusao=1');
+	} else if ($acao == 'recuperar') {
+		echo 'Chegamos até aqui!';
+	}
 	
