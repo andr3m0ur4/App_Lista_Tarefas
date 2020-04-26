@@ -17,9 +17,9 @@ function carregarClick() {
 function editar(id, txt_tarefa) {
 	// criar um form de edição
 	let form = document.createElement('form')
-	form.action = '#'
+	form.action = './tarefa_controller.php?acao=atualizar'
 	form.method = 'post'
-	form.className = 'row input-group justify-content-center'
+	form.className = 'row input-group'
 
 	// criar um input para entrada do texto
 	let inputTarefa = document.createElement('input')
