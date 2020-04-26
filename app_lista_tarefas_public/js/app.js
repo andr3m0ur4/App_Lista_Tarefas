@@ -23,6 +23,16 @@ function carregarClick() {
 			editar(id, span)
 		}
 	}
+
+	let icone_atualizar = document.getElementsByClassName('atualizar')
+
+	for (let i = 0; i < icone_atualizar.length; i++) {
+		let id = icone_atualizar[i].id.replace('atualizar_', '')
+
+		icone_atualizar.item(i).onclick = () => {
+			marcarRealizada(id)
+		}
+	}
 }
 
 function editar(id, txt_tarefa) {
@@ -79,4 +89,8 @@ function editar(id, txt_tarefa) {
 
 function remover(id) {
 	location.href = './todas_tarefas.php?acao=remover&id=' + id
+}
+
+function marcarRealizada(id) {
+	location.href = './todas_tarefas.php?acao=marcar_realizada&id=' + id
 }

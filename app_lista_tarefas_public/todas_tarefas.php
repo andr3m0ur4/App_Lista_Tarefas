@@ -53,8 +53,12 @@
 
 										<div class="col-sm-3 mt-2 d-flex justify-content-between">
 											<i class="fas fa-trash-alt fa-lg text-danger remover" id="remover_<?= $tarefa->id ?>"></i>
-											<i class="fas fa-edit fa-lg text-info editar" id="editar_<?= $tarefa->id ?>"></i>
-											<i class="fas fa-check-square fa-lg text-success"></i>
+
+											<?php if ($tarefa->status == 'pendente') : ?>
+												<i class="fas fa-edit fa-lg text-info editar" id="editar_<?= $tarefa->id ?>"></i>
+												<i class="fas fa-check-square fa-lg text-success atualizar" id="atualizar_<?= $tarefa->id ?>"></i>
+											<?php endif ?>
+											
 										</div>
 									</div>
 								<?php endforeach ?>

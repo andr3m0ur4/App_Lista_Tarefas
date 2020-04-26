@@ -47,7 +47,20 @@
 		$conexao = new Conexao();
 
 		$tarefa_service = new TarefaService($conexao, $tarefa);
+		
 		if ($tarefa_service->remover()) {
+			header('Location: ./todas_tarefas.php');
+		}
+	} else if ($acao == 'marcar_realizada') {
+		$tarefa = new Tarefa();
+		$tarefa->__set('id', $_GET['id']);
+		$tarefa->__set('id_status', 2);
+
+		$conexao = new Conexao();
+
+		$tarefa_service = new TarefaService($conexao, $tarefa);
+		
+		if ($tarefa_service->marcarRealizada()) {
 			header('Location: ./todas_tarefas.php');
 		}
 	}
