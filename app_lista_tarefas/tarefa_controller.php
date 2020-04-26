@@ -27,7 +27,7 @@
 		$tarefas = $tarefa_service->recuperar();
 
 	} else if ($acao == 'atualizar') {
-		
+
 		$tarefa = new Tarefa();
 		$tarefa->__set('id', $_POST['id']);
 		$tarefa->__set('tarefa', $_POST['tarefa']);
@@ -37,6 +37,17 @@
 		$tarefa_service = new TarefaService($conexao, $tarefa);
 
 		if ($tarefa_service->atualizar()) {
+			header('Location: ./todas_tarefas.php');
+		}
+	} else if ($acao == 'remover') {
+
+		$tarefa = new Tarefa();
+		$tarefa->__set('id', $_GET['id']);
+
+		$conexao = new Conexao();
+
+		$tarefa_service = new TarefaService($conexao, $tarefa);
+		if ($tarefa_service->remover()) {
 			header('Location: ./todas_tarefas.php');
 		}
 	}

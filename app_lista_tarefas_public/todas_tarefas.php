@@ -32,9 +32,9 @@
 			<div class="row">
 				<div class="col-sm-3 menu">
 					<ul class="list-group">
-						<li class="list-group-item"><a href="index.php">Tarefas pendentes</a></li>
-						<li class="list-group-item"><a href="nova_tarefa.php">Nova tarefa</a></li>
-						<li class="list-group-item active"><a href="#">Todas tarefas</a></li>
+						<li class="list-group-item"><a href="./index.php">Tarefas pendentes</a></li>
+						<li class="list-group-item"><a href="./nova_tarefa.php">Nova tarefa</a></li>
+						<li class="list-group-item active"><a href="./todas_tarefas.php">Todas tarefas</a></li>
 					</ul>
 				</div>
 
@@ -52,8 +52,8 @@
 										</div>
 
 										<div class="col-sm-3 mt-2 d-flex justify-content-between">
-											<i class="fas fa-trash-alt fa-lg text-danger"></i>
-											<i class="fas fa-edit fa-lg text-info edicao" id="<?= $tarefa->id ?>"></i>
+											<i class="fas fa-trash-alt fa-lg text-danger remover" id="remover_<?= $tarefa->id ?>"></i>
+											<i class="fas fa-edit fa-lg text-info editar" id="editar_<?= $tarefa->id ?>"></i>
 											<i class="fas fa-check-square fa-lg text-success"></i>
 										</div>
 									</div>

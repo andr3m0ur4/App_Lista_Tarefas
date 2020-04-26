@@ -3,13 +3,24 @@ window.onload = () => {
 }
 
 function carregarClick() {
-	let icone_editar = document.getElementsByClassName('edicao')
+	let icone_remover = document.getElementsByClassName('remover')
+
+	for (let i = 0; i < icone_remover.length; i++) {
+		let id = icone_remover[i].id.replace('remover_', '')
+
+		icone_remover.item(i).onclick = () => {
+			remover(id)
+		}
+	}
+
+	let icone_editar = document.getElementsByClassName('editar')
 
 	for (let i = 0; i < icone_editar.length; i++) {
-		let span = document.getElementById('tarefa_' + icone_editar.item(i).id).children[0].innerHTML
+		let id = icone_editar[i].id.replace('editar_', '')
+		let span = document.getElementById('tarefa_' + id).children[0].innerHTML
 
 		icone_editar.item(i).onclick = () => {
-			editar(icone_editar.item(i).id, span)
+			editar(id, span)
 		}
 	}
 }
@@ -64,4 +75,8 @@ function editar(id, txt_tarefa) {
 
 	// incluir form na página
 	tarefa.insertBefore(form, tarefa[0])
+}
+
+function remover(id) {
+	location.href = './todas_tarefas.php?acao=remover&id=' + id
 }
