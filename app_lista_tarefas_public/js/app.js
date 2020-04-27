@@ -38,7 +38,11 @@ function carregarClick() {
 function editar(id, txt_tarefa) {
 	// criar um form de edição
 	let form = document.createElement('form')
-	form.action = './index.php?pag=index&acao=atualizar'
+	if (caminho == 'index.php') {
+		form.action = `./${caminho}?pag=index&acao=atualizar`
+	} else {
+		form.action = `./${caminho}?acao=atualizar`
+	}
 	form.method = 'post'
 	form.className = 'row input-group'
 
@@ -88,9 +92,27 @@ function editar(id, txt_tarefa) {
 }
 
 function remover(id) {
-	location.href = './index.php?pag=index&acao=remover&id=' + id
+	if (caminho == 'index.php') {
+		location.href = `./${caminho}?pag=index&acao=remover&id=` + id
+	} else {
+		location.href = `./${caminho}?acao=remover&id=` + id
+	}
 }
 
 function marcarRealizada(id) {
-	location.href = './index.php?pag=index&acao=marcar_realizada&id=' + id
+	if (caminho == 'index.php') {
+		location.href = `./${caminho}?pag=index&acao=remover&id=` + id
+	} else {
+		location.href = `./${caminho}?acao=marcar_realizada&id=` + id
+	}
+}
+
+let caminho = extrairArquivo(location.href)
+
+// Função para extrair o nome do arquivo
+function extrairArquivo(caminho){
+	caminho	= caminho.replace("/\/g", '/')
+	let arquivo = caminho.substring(caminho.lastIndexOf('/') + 1)
+	
+	return arquivo
 }
