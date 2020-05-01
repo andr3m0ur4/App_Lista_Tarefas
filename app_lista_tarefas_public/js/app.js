@@ -6,9 +6,9 @@ function carregarClick() {
 	let icone_remover = document.getElementsByClassName('remover')
 
 	for (let i = 0; i < icone_remover.length; i++) {
-		let id = icone_remover[i].id.replace('remover_', '')
 
-		icone_remover.item(i).onclick = () => {
+		icone_remover.item(i).onclick = evento => {
+			let id = evento.target.id.replace('remover_', '')
 			remover(id)
 		}
 	}
@@ -16,10 +16,10 @@ function carregarClick() {
 	let icone_editar = document.getElementsByClassName('editar')
 
 	for (let i = 0; i < icone_editar.length; i++) {
-		let id = icone_editar[i].id.replace('editar_', '')
-		let span = document.getElementById('tarefa_' + id).children[0].innerHTML
 
-		icone_editar.item(i).onclick = () => {
+		icone_editar.item(i).onclick = evento => {
+			let id = evento.target.id.replace('editar_', '')
+			let span = document.getElementById('tarefa_' + id).children[0].innerHTML
 			editar(id, span)
 		}
 	}
@@ -27,9 +27,9 @@ function carregarClick() {
 	let icone_atualizar = document.getElementsByClassName('atualizar')
 
 	for (let i = 0; i < icone_atualizar.length; i++) {
-		let id = icone_atualizar[i].id.replace('atualizar_', '')
 
-		icone_atualizar.item(i).onclick = () => {
+		icone_atualizar.item(i).onclick = evento => {
+			let id = evento.target.id.replace('atualizar_', '')
 			marcarRealizada(id)
 		}
 	}
@@ -101,7 +101,7 @@ function remover(id) {
 
 function marcarRealizada(id) {
 	if (caminho == 'index.php') {
-		location.href = `./${caminho}?pag=index&acao=remover&id=` + id
+		location.href = `./${caminho}?pag=index&acao=marcar_realizada&id=` + id
 	} else {
 		location.href = `./${caminho}?acao=marcar_realizada&id=` + id
 	}
@@ -110,7 +110,7 @@ function marcarRealizada(id) {
 let caminho = extrairArquivo(location.href)
 
 // Função para extrair o nome do arquivo
-function extrairArquivo(caminho){
+function extrairArquivo(caminho) {
 	caminho	= caminho.replace("/\/g", '/')
 	let arquivo = caminho.substring(caminho.lastIndexOf('/') + 1)
 	
